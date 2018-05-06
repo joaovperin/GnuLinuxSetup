@@ -24,6 +24,10 @@
 	
 	# Interpolation:
 	 TODO: Write about interpolations.
+	  %, %%, # and ##.
+	 Examples:
+	  path=$(dirname $fullfile)  file=$(basename $fullfile)  name=${file%.*}   ext=${file##*.}
+
 	 https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
 	 https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
 	
