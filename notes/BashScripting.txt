@@ -21,6 +21,26 @@
 	   name=Joao	fullname="$name Victor"		outputtest='Variable name is \'$name\'.'
 	   myvar=$( ls /etc | wc -l )
 	 The 'env' command will list all mapped variables.
+	
+	# Interpolation:
+	 TODO: Write about interpolations.
+	 https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html
+	 https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
+	
+	# Calculations and Expressions
+	 To calculate something in bash, we can use $ followed double parenthesis.
+	    echo $((3+5))   # Outputs 8.
+	 We can also set it to a variable:   
+	    randomLessThanLength=$(( $RANDOM % $(cat /usr/share/dict/words | wc -l)))   # Gets random number less than number of lines of the file.
+	 Another way is to use [].
+	    result=$[3 * 5]  # Result = 15
+	 Also, we have the 'expr' command that can be used to evalute expressions. It can do some calculations to INTEGERS only.
+	    expr 12 * 2     # Outputs 24  
+	    expr 5 % 3	    # Outputs 2
+	    expr 10 / 3	    # Outputs 3
+	  The expr command is so robust it can evaluates boolean expressions, and do some string manipulating tests:
+	    expr substr potato 2 4  # Substring potato from 2 to 4, Outputs 'atat'.
+	    expr length  potato	    # Length of potato. Outputs '6'.
 
 	# Scope:
 	 All the variables will run into local scope. Child scripts called from the main script
