@@ -14,3 +14,42 @@
 	$SECONDS - The number of seconds since the script was started.
 	$RANDOM - Returns a different random number each time is it referred to.
 	$LINENO - Returns the current line number in the Bash script.
+
+	# Variables:
+	 To set a variable, just type name=value. To retrieve the var's value, use $name.
+	 ...It's also possible to set a var value by the output of a command. It's done:
+	   name=Joao	fullname="$name Victor"		outputtest='Variable name is \'$name\'.'
+	   myvar=$( ls /etc | wc -l )
+	 The 'env' command will list all mapped variables.
+
+	# Scope:
+	 All the variables will run into local scope. Child scripts called from the main script
+	 ...will only be accessible if you export them.
+	   export $myVar
+	 Exported variables can be read but changes will not bubbly up.
+
+	# Streams:
+	 The > and >> operators are used to redirect the output stream of a ran command into a file.
+	    echo $myVar > file.txt
+	 You can also read content from a file and set it to a command as a param.
+	    Instead of cat file.txt | grep "search", use grep "search" < file.txt.
+	 It's also possible to redirect only the stderr stream:
+	    cat binaryfile.bin 2>error_log.txt
+	 It's possible to redirect a stream output into another one:
+	    ls -l video.mpg blah.foo > log.txt 2>&1      #This redirects stderr into sdtout, so it's printed on screen.
+
+	# Proccess Managing:
+	 htop is a command line proccess manager.
+	 top and ps are simplified tools to list the proccesses.
+	   ps 				# Lists a few
+	   ps aux | grep "chrome"	# Lists everything and prints "chrome" like results
+	   kill $pid    kill -9 $pid 	# Kills a runing proccess, or kill it by force.
+	
+	# Background Proccess:
+	 To put a proccess to run in background, just create a job by typing the '&' operator at this end.
+	   sleep 15 &
+	 To see the jobs current running, use 'jobs' command. To bring a job to first plan, use fg <num> command.
+	    fg 1
+	 To put the current runing proccess into 2nd plan, just press Ctrl Z. It can back to 1st plan using fg command.
+
+	https://ryanstutorials.net/linuxtutorial/scripting.php
